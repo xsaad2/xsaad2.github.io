@@ -23,16 +23,23 @@
       form {
         display: table;
       }
-      .row,
-      .option {
+      .row {
         display: table-row;
+        justify-content: center;
+        align-items: center;
       }
       .input-box {
+        width: 100px;
         display: table-cell;
-        margin: 20px;
+        text-align: left;
       }
       .label {
         display: table-cell;
+        text-align: right;
+        margin-right: 50px;
+      }
+      .options {
+        text-align: left;
       }
     </style>
   </head>
@@ -85,18 +92,16 @@
               </label>
             </div>
             <div class="input-box">
-              <div class="option">
+              <div class="options">
                 <input type="radio" id="def" name="likelyhood" />
                 <label for="def">Definitely</label>
-              </div>
-              <div class="option">
+                <br />
                 <input type="radio" id="maybe" name="likelyhood" />
                 <label for="maybe">Maybe</label>
+                <br />
+                <input type="radio" id="not" name="likelyhood" />
+                <label for="not">Not Sure </label>
               </div>
-              <div class="option"></div>
-
-              <input type="radio" id="not" name="likelyhood" />
-              <label for="not">Not Sure</label>
             </div>
           </div>
         </div>
