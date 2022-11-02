@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        background-color: #a9d7d1;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 50px 40px;
+        border-radius: 5px;
+      }
+      form {
+        display: table;
+      }
+      .row,
+      .option {
+        display: table-row;
+      }
+      .input-box {
+        display: table-cell;
+        margin: 20px;
+      }
+      .label {
+        display: table-cell;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="Servey">
+        <div class="row">
+          <div class="label">
+            <label for="name">Name</label>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Enter your Name" id="name" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-box">
+            <input type="email" placeholder="Enter your Email" id="email" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <label for="age">Age</label>
+          </div>
+          <div class="input-box">
+            <input type="number" placeholder="Enter your Age" id="age" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <label for="role">Which option best describes your role </label>
+          </div>
+          <div class="input-box">
+            <select name="roles" id="role">
+              <option value="Student">Student</option>
+              <option value="Employed">Employed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div class="label">
+              <label for="recommend">
+                How likely is that you would recommend freeCodeCamp to a friend
+              </label>
+            </div>
+            <div class="input-box">
+              <div class="option">
+                <input type="radio" id="def" name="likelyhood" />
+                <label for="def">Definitely</label>
+              </div>
+              <div class="option">
+                <input type="radio" id="maybe" name="likelyhood" />
+                <label for="maybe">Maybe</label>
+              </div>
+              <div class="option"></div>
+
+              <input type="radio" id="not" name="likelyhood" />
+              <label for="not">Not Sure</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
