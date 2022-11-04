@@ -7,36 +7,51 @@
     <title>Document</title>
     <style>
       body {
-        display: flex;
         height: 100vh;
         background-color: #a9d7d1;
         justify-content: center;
         align-items: center;
       }
       .container {
-        max-width: 700px;
+        max-width: 1100px;
         width: 100%;
-        background: #fff;
-        padding: 50px 40px;
+        height: 80%;
+        background: whitesmoke;
         border-radius: 5px;
+        margin: 2rem auto;
       }
       form {
-        display: table;
+        display: inline-block;
+      }
+      h1 {
+        text-align: center;
+      }
+      p {
+        padding-top: 10px;
+        text-align: center;
       }
       .row {
         display: table-row;
-        justify-content: center;
-        align-items: center;
       }
       .input-box {
-        width: 100px;
         display: table-cell;
         text-align: left;
+        padding-top: 20px;
+      }
+      .fieldtext {
+        height: 20px;
+        width: 300px;
       }
       .label {
         display: table-cell;
         text-align: right;
-        margin-right: 50px;
+        padding-right: 20px;
+      }
+      .formdiv {
+        display: block;
+        text-align: center;
+        position: relative;
+        padding: 1px;
       }
       .options {
         text-align: left;
@@ -44,51 +59,70 @@
     </style>
   </head>
   <body>
+    <h1>Survey Form</h1>
+
     <div class="container">
-      <form action="Servey">
-        <div class="row">
-          <div class="label">
-            <label for="name">Name</label>
+      <div class="formdiv">
+        <p>let us know how we can improve freeCodeCamp</p>
+        <form action="Servey">
+          <div class="row">
+            <div class="label">
+              <label for="name">Name:</label>
+            </div>
+            <div class="input-box">
+              <input
+                class="fieldtext"
+                type="text"
+                placeholder="Enter your Name"
+                id="name"
+              />
+            </div>
           </div>
-          <div class="input-box">
-            <input type="text" placeholder="Enter your Name" id="name" />
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="label">
-            <label for="email">Email</label>
+          <div class="row">
+            <div class="label">
+              <label for="email">Email:</label>
+            </div>
+            <div class="input-box">
+              <input
+                class="fieldtext"
+                type="email"
+                placeholder="Enter your Email"
+                id="email"
+              />
+            </div>
           </div>
-          <div class="input-box">
-            <input type="email" placeholder="Enter your Email" id="email" />
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="label">
-            <label for="age">Age</label>
+          <div class="row">
+            <div class="label">
+              <label for="age">Age:</label>
+            </div>
+            <div class="input-box">
+              <input
+                class="fieldtext"
+                type="number"
+                placeholder="Enter your Age"
+                id="age"
+              />
+            </div>
           </div>
-          <div class="input-box">
-            <input type="number" placeholder="Enter your Age" id="age" />
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="label">
-            <label for="role">Which option best describes your role </label>
+          <div class="row">
+            <div class="label">
+              <label for="role">Which option best describes your role? </label>
+            </div>
+            <div class="input-box">
+              <select class="fieldtext" name="roles" id="role">
+                <option value="Student">Student</option>
+                <option value="Employed">Employed</option>
+              </select>
+            </div>
           </div>
-          <div class="input-box">
-            <select name="roles" id="role">
-              <option value="Student">Student</option>
-              <option value="Employed">Employed</option>
-            </select>
-          </div>
-        </div>
-        <div>
           <div class="row">
             <div class="label">
               <label for="recommend">
-                How likely is that you would recommend freeCodeCamp to a friend
+                How likely is that you would recommend <br />
+                freeCodeCamp to a friend?
               </label>
             </div>
             <div class="input-box">
@@ -104,8 +138,38 @@
               </div>
             </div>
           </div>
-        </div>
-      </form>
+          <div class="row">
+            <div class="label">
+              <label for="fcc">what do you like most in FCC? </label>
+            </div>
+            <div class="input-box">
+              <select class="fieldtext" id="fcc">
+                <option value="" disabled selected>Select your option</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="label">
+              <label for="recommend">
+                Things that should be improved in the future <br />
+                (check all that applies)
+              </label>
+            </div>
+            <div class="input-box">
+              <div class="options">
+                <input type="checkbox" id="def" />
+                <label for="front">Front-End-Projects</label>
+                <br />
+                <input type="checkbox" id="maybe" />
+                <label for="back">Back-End-Projects</label>
+                <br />
+                <input type="checkbox" id="not" />
+                <label for="data">Data visualization</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
