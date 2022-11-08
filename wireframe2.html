@@ -56,6 +56,11 @@
       .options {
         text-align: left;
       }
+      .select {
+        background-color: rgb(234, 232, 232);
+        width: 150px;
+        height: 20px;
+      }
     </style>
   </head>
   <body>
@@ -75,6 +80,7 @@
                 type="text"
                 placeholder="Enter your Name"
                 id="name"
+                required
               />
             </div>
           </div>
@@ -89,6 +95,7 @@
                 type="email"
                 placeholder="Enter your Email"
                 id="email"
+                required
               />
             </div>
           </div>
@@ -103,6 +110,7 @@
                 type="number"
                 placeholder="Enter your Age"
                 id="age"
+                required
               />
             </div>
           </div>
@@ -112,7 +120,7 @@
               <label for="role">Which option best describes your role? </label>
             </div>
             <div class="input-box">
-              <select class="fieldtext" name="roles" id="role">
+              <select class="select" name="roles" id="role">
                 <option value="Student">Student</option>
                 <option value="Employed">Employed</option>
               </select>
@@ -143,8 +151,8 @@
               <label for="fcc">what do you like most in FCC? </label>
             </div>
             <div class="input-box">
-              <select class="fieldtext" id="fcc">
-                <option value="" disabled selected>Select your option</option>
+              <select class="select" id="fcc">
+                <option disabled selected>Select your option</option>
               </select>
             </div>
           </div>
