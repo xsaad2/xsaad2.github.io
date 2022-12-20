@@ -1,0 +1,10 @@
+<div class="tasks">
+  <ng-container *ngFor="let source of sources">
+    <div class="task">
+      <div class="task_pic">
+        <img src="assets\pics\{{ source.image }}.PNG" />
+      </div>
+      <div class="task_desc">{{ source.desc }}</div>
+    </div>
+  </ng-container>
+</div>

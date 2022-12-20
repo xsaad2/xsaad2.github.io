@@ -1,0 +1,38 @@
+.tasks{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 20px auto;
+
+}
+.task{
+    width: 280px;
+    height: 330px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+}
+.task:hover{
+    box-shadow: 4px 3px 11px 6px rosybrown;
+}
+.task_pic{
+    display: flex;
+    height: 170px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+.task_pic img{
+    
+    display: flex;
+    height: auto;
+    max-height: 170px;
+    width: 100%;
+}
+.task_desc{
+    display: block;
+    height: 120px;
+}

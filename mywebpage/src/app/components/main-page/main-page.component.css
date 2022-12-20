@@ -1,0 +1,9 @@
+.toolbar{
+    background-color: antiquewhite;
+}
+.spacer{
+    flex: auto;
+}
+.sidenav{
+    width: 220px;
+}
