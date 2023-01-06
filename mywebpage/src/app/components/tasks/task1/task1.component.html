@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let question of fragen">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ question.titleQuestion }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel *ngFor="let innerQ of question.questions">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ innerQ.q }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ innerQ.a }}</p>
+        <div *ngIf="innerQ.wireframe">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="open_in_new"
+            (click)="openFrame()"
+          ></mat-icon>
+          <app-wirframe1></app-wirframe1>
+        </div>
+      </mat-expansion-panel>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

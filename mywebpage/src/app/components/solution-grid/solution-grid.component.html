@@ -1,6 +1,6 @@
 <div class="tasks">
   <ng-container *ngFor="let source of sources">
-    <div class="task">
+    <div routerLink="{{ source.link }}" class="task">
       <div class="task_pic">
         <img src="assets\pics\{{ source.image }}.PNG" />
       </div>

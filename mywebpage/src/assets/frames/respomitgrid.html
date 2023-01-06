@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      body {
+        margin: 0;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
+        background-color: rgb(240, 240, 240);
+      }
+      .header {
+        font-size: 14px;
+        display: flex;
+        position: sticky;
+        background-color: rgb(67, 67, 67);
+        height: 50px;
+        color: rgb(205, 210, 213);
+        justify-content: center;
+        align-items: center;
+        top: 0;
+      }
+      .header_list {
+        gap: 15px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+      }
+
+      .h1 {
+        padding: 20px;
+        text-align: center;
+        font-size: x-large;
+      }
+      main {
+        padding-bottom: 30px;
+      }
+      .content {
+        display: flex;
+        height: auto;
+        max-width: auto;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+      }
+      p {
+        font-weight: 400;
+        font-family: "Roboto", sans-serif;
+        display: block;
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+      }
+      .image {
+        height: auto;
+        max-width: auto;
+        display: flex;
+        justify-content: right;
+        padding-left: 50px;
+      }
+      .img {
+        height: 450px;
+        max-width: 350px;
+        display: flex;
+        border-radius: 20px;
+        border: 1px black solid;
+      }
+      .orderbtn {
+        width: 300px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: rgb(236, 141, 53);
+        color: white;
+        font-size: 12px;
+        border: none;
+        font-size: 15px;
+      }
+      .orderbtn:hover,
+      .footer_btn:hover {
+        background-color: rgba(241, 159, 76, 0.867);
+      }
+      .text1 {
+        max-width: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3 1fr);
+        justify-content: left;
+      }
+      .btn {
+        text-align: center;
+      }
+      .textnbut {
+        height: auto;
+        max-width: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+        padding-left: 100px;
+      }
+      .footer {
+        font-size: 14px;
+        position: sticky;
+        background-color: rgb(7, 25, 38);
+        height: 200px;
+        color: rgb(205, 210, 213);
+      }
+      .footer_text {
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_btn_cntnr {
+        width: 100%;
+        text-align: center;
+      }
+      .footer_btn {
+        width: 500px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: rgb(236, 141, 53);
+        color: white;
+        font-size: 12px;
+        border: none;
+        font-size: 15px;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <ul class="header_list">
+          <li>
+            <a>The Book Series</a>
+          </li>
+          <li>
+            <a>Testimonials</a>
+          </li>
+          <li>
+            <a>The Author</a>
+          </li>
+          <li>
+            <a>Free Resources</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="h1"><b> You dont know JavaScript</b></div>
+      <div class="content">
+        <div class="image">
+          <img class="img" src="../beforeangular\landing-img.png" />
+        </div>
+        <div class="textnbut">
+          <div class="text1">
+            <p>Don't just drift through Javascript.</p>
+            <p>Understand how Javascript works</p>
+            <p>Start your journey through thr bumpy side of javascript</p>
+          </div>
+          <div class="btn">
+            <button class="orderbtn">ORDER YOUR COPY NOW</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer_text">
+        The first ebook in the book series is absolutely free.
+      </p>
+      <div class="footer_btn_cntnr">
+        <button class="footer_btn">FIND OUT MORE ABOUT THIS OFFER</button>
+      </div>
+    </footer>
+  </body>
+</html>

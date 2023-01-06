@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/platform-browser": "^15.0.4",
+    "@types/node": "^18.11.18",
+    "ngx-highlightjs": "^7.0.1"
+  }
+}
