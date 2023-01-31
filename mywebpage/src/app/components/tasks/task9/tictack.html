@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <title>Tic-Tac-Toe</title>
+    <style>
+      .board {
+        display: grid;
+
+        grid-template-columns: 3;
+        grid-template-rows: 3;
+        flex-wrap: wrap;
+        width: 600px;
+        height: auto;
+        margin: 0 auto;
+      }
+      .square {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      .line {
+        stroke: black;
+        stroke-width: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="board">
+      <div class="square" id="square0"></div>
+      <div class="square" id="square1"></div>
+      <div class="square" id="square2"></div>
+      <div class="square" id="square3"></div>
+      <div class="square" id="square4"></div>
+      <div class="square" id="square5"></div>
+      <div class="square" id="square6"></div>
+      <div class="square" id="square7"></div>
+      <div class="square" id="square8"></div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>

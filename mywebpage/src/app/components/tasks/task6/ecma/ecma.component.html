@@ -1,0 +1,145 @@
+<div class="container">
+  <h1 class="header">Übung 6: ECMAScript (ES)</h1>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title> ECMA Konzepte </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        <b> 1-Klammerpaare</b> Schreiben Sie eine Webseite, in die man eine
+        Zeichenkette mit beliebigen Buchstaben, Zahlen und Sonderzeichen
+        eingeben kann, die beliebig geschachtelte Klammern enthält, sodass
+        sofort geprüft wird, ob alle Klammerpaare korrekt geschachtelt sind.
+      </p>
+      <pre><code class="javascript">
+        function verifySymbols(str, symbolePairs) {{
+            let openSymbols = 0;
+            let closeSymbols = 0;
+            symbolePairs.forEach((element) => {
+              for (var i = 0; i < str.length; i++) {
+                let char = str.charAt(i);
+                if (char == element[0]) ++openSymbols;
+                if (char == element[1]) ++closeSymbols;
+              }
+            });
+          
+            return openSymbols == closeSymbols;
+        }
+    </code></pre>
+      <p>
+        <b> 2-Topologische Iterierbarkeit</b>
+        Schreiben Sie eine ES6-Klasse Vorrang, Wählen Sie eine Implementierung,
+        die universell gültig, also nicht nur für dieses Beispiel gilt.
+        (Überlegen Sie sich, über welche Properties und Methoden eine solche
+        Klasse verfügen sollte und wie TopSort hier hineinspielt.
+      </p>
+      <pre><code class="javascript">
+        function topsort(dependencies) {{
+            console.log("Dependencies in topsort function: ", dependencies);
+            let sorted = [];
+            let visited = new Set();
+            let graph = createGraph(dependencies);
+          
+            for (let node of graph.nodes) {
+              if (!visited.has(node)) {
+                dfs(node, visited, sorted, graph);
+              }
+            }
+            return sorted.reverse();
+          }
+          
+          function dfs(node, visited, sorted, graph) {
+            visited.add(node);
+          
+            for (let neighbor of graph.adjList.get(node)) {
+              if (!visited.has(neighbor)) {
+                dfs(neighbor, visited, sorted, graph);
+              }
+            }
+            sorted.push(node);
+          }
+          
+          function createGraph(dependencies) {
+            let nodes = new Set();
+            let adjList = new Map();
+          
+            for (let [a, b] of dependencies) {
+              nodes.add(a);
+              nodes.add(b);
+          
+              if (!adjList.has(a)) {
+                adjList.set(a, new Set());
+              }
+              if (!adjList.has(b)) {
+                adjList.set(b, new Set());
+              }
+              adjList.get(a).add(b);
+            }
+            return { nodes, adjList };
+          }
+          
+          class Vorrang {
+            constructor(dependencies) {
+              this.dependencies = dependencies;
+              this.sorted = topsort(dependencies);
+              this.index = 0;
+            }
+          
+            [Symbol.iterator]() {
+              return {
+                next: () => {
+                  if (this.index < this.sorted.length) {
+                    return {
+                      value: this.sorted[this.index++],
+                      done: false,
+                    };
+                  } else {
+                    return {
+                      done: true,
+                    };
+                  }
+                },
+              };
+            }
+          }
+      </code></pre>
+      <p>
+        <b> 3-Topologischer Generator</b> Stellen Sie bei Ihrer Klasse aus der
+        letzten Aufgabe die topologische Iterierbarkeit mittels Generator her.
+        Wählen Sie eine Implementierung, die universell gültig, also nicht nur
+        für das Beispiel gilt.
+      </p>
+      <pre><code class="javascript">
+        class Vorrang {{
+            constructor(dependencies) {
+              this.dependencies = dependencies;
+              this.sorted = topsort(dependencies);
+            }
+          
+            *[Symbol.iterator]() {
+              for (let node of this.sorted) {
+                yield node;
+              }
+            }
+          }
+    </code></pre>
+      <p>
+        <b> 4-DeepCopy </b>
+        Schreiben Sie eine rekursive Funktion deepCopy( struct ) als
+        ES6-Ausdruck, sodass beliebig geschachtelte Arrays und Objekte
+        tiefenkopiert werden können.
+      </p>
+      <pre><code class="javascript">
+        const deepCopy = (struct) =>
+        struct instanceof Array
+          ? struct.map((elem) => deepCopy(elem))
+          : struct instanceof Object
+          ? Object.fromEntries(
+              Object.entries(struct).map(([key, value]) => [key, deepCopy(value)])
+            )
+          : struct;
+
+    </code></pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

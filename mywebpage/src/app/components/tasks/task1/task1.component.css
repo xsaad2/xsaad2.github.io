@@ -1,9 +1,16 @@
 .container{
     width: 100%;
-    height: 100%;
+    color: antiquewhite;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1200px;
     margin: 20px auto;
+}
+.parent-panel,.mat-expansion-panel-header{
+    background-color:#e3f0f1;
+}
+.header{
+    display: block;
+    color: black;
 }

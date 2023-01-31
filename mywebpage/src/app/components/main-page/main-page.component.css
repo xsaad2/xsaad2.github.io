@@ -1,9 +1,36 @@
+body{
+  height: 100vh;
+}
+mat-sidenav-content{
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #66aaed 0%, #bb4ae7 100%);
+  height: 100vh;
+  min-width: 363px;
+}
 .toolbar{
-    background-color: antiquewhite;
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #7ab7f4 55%, #8452e8 100%);
+  width:100%;
+  min-width: 363px;
 }
 .spacer{
     flex: auto;
 }
+.toolbarbtn mat-button{
+  color: #ffffff;
+}
 .sidenav{
     width: 220px;
 }
+
+.custom-sidenav {
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #7ab7f4 100%, #9b44ff 60%);
+  
+  }
+  .sidenav-container{
+    color:white;
+  }
+  ::ng-deep .mat-nav-list .mat-list-item {
+    color: white;
+  }

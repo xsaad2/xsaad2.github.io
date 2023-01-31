@@ -1,0 +1,19 @@
+.container{
+    display: block;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    width: 80%;
+}
+
+.header{
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+}
+.welcome{
+    font-size: 20px;
+}

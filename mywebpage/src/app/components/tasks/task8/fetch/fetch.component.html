@@ -1,0 +1,54 @@
+<div class="container">
+  <h1 class="header">Übung 8: Asynchrones JavaScript</h1>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title> JavaScript funktional programmieren </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        <b>1-Promises</b> Erstellen Sie auf Ihrem lokalen Server zwei
+        Text-Dateien A.txt und B.txt mit ungefähr gleich vielen Zeilen. Laden
+        Sie mit der fetch-API parallel beide Text-Dateien vom Server. Geben Sie
+        auf einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der
+        Anfang der Zeile aus A.txt und das Ende aus B.txt stammen soll. Die
+        beiden Dateien sollen also zeilenweise konkateniert werden. Erzielen Sie
+        max. Geschwindigkeit durch maximale Parallelität. Achten Sie
+        gleichzeitig auf Korrektheit. Verwenden Sie dabei ausschließlich die
+        Promise API ohne async / await.
+      </p>
+      <pre><code class="javascript">
+        function readFiles() {{
+          Promise.all([
+            fetch("file1.txt").then((res) => res.text()),
+            fetch("file2.txt").then((res) => res.text()),
+          ]).then(([file1, file2]) => {{
+            const lines1 = file1.split("\n");
+            const lines2 = file2.split("\n");
+             for (let i = 0; i < lines1.length; i++) {
+              <!--fileContent.innerHTML += `<span>${lines1[i]}</span><br>`;
+              fileContent.innerHTML += `<span style="color: red;">${lines2[i]}</span><br>`;-->
+            }
+          });
+        }
+      </code></pre>
+      <p>
+        <b> 2-async / await</b> Lösen Sie die letzte Aufgabe mit async / await
+        statt Promise.
+      </p>
+      <pre><code class="javascript">
+        const fileContent = document.querySelector("#file-content");
+
+        async function readFiles() {{}
+          const file1 = await fetch("file1.txt").then((res) => res.text());
+          const file2 = await fetch("file2.txt").then((res) => res.text());
+          const lines1 = file1.split("\n");
+          const lines2 = file2.split("\n");
+          for (let i = 0; i < lines1.length; i++) {
+           <!--- fileContent.innerHTML += `<span>${lines1[i]}</span><br>`;
+            fileContent.innerHTML += `<span style="color: red;">${lines2[i]}</span><br>`;
+          }-->
+        }
+      </code></pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

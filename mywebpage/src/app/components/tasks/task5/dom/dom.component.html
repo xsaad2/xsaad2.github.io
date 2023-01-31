@@ -1,0 +1,207 @@
+<div class="container">
+  <h1 class="header">Übung 5: Document Object Model (DOM)</h1>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 5.2. Rednerliste mit Zeitmessung </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Implementieren Sie die interaktive Anwendung "Rednerliste mit
+        Zeitmessung" selbstständig in JavaScript durch Nutzung der DOM-API und
+        der Timer-Funktionen. Neue Redner sollen auf Knopfdruck hinzugefügt
+        werden können. Deren Uhr wird dann sofort automatisch gestartet und alle
+        anderen Uhren angehalten. Bei jedem Redner soll die individuelle,
+        gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll
+        es einen eigenen Start-/Stopp-Button geben. Es soll immer nur eine Uhr
+        laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller
+        Redebeiträge der betreffenden Person.
+      </p>
+      <pre><code class="javascript">
+        let nameList = document.getElementById("name-list");
+        let nameInput = document.getElementById("name-input");
+        let addNameButton = document.getElementById("add-name");
+        let currentStopwatch;
+        let list = [];
+        
+        addNameButton.addEventListener("click", function () {{
+          let name = nameInput.value;
+          if (name === "") {
+            return;
+          }
+        
+          if (currentStopwatch) {
+            currentStopwatch.stop();
+          }
+        
+          let newName = document.createElement("div");
+          newName.innerHTML = name + " ";
+          let newStopwatch = new Stopwatch(newName, name);
+          currentStopwatch = newStopwatch;
+          currentStopwatch.start();
+          list.push(currentStopwatch);
+        
+          nameList.appendChild(newName);
+        });
+        
+        function Stopwatch(elem, name) {
+          this.name = name;
+          let time = 0;
+          let interval;
+          let offset;
+        
+          this.startButton = document.createElement("button");
+        
+          function update() {
+            if (this.isOn) {
+              time += delta();
+            }
+            this.startButton.addEventListener("click", () => {
+              this.isOn ? this.stop() : this.start();
+            });
+            elem.innerHTML = name + " " + timeFormatter(time) + " ";
+        
+            elem.appendChild(this.startButton);
+          }
+        
+          function delta() {
+            let now = Date.now();
+            let timePassed = now - offset;
+            offset = now;
+            return timePassed;
+          }
+        
+          function timeFormatter(timeInMilliseconds) {
+            let time = new Date(timeInMilliseconds);
+        
+            let minutes = time.getMinutes().toString();
+            let seconds = time.getSeconds().toString();
+            let hours = time.getHours().toString();
+        
+            if (minutes.length < 2) {
+              minutes = "0" + minutes;
+            }
+        
+            if (seconds.length < 2) {
+              seconds = "0" + seconds;
+            }
+        
+            if (hours.length < 2) {
+              hours = "0" + hours;
+            }
+        
+            return hours + " : " + minutes + " : " + seconds;
+          }
+        
+          this.isOn = false;
+        
+          this.start = function () {
+            list.forEach((l) => {
+              l.stop();
+            });
+            if (!this.isOn) {
+              interval = setInterval(update.bind(this), 10);
+              offset = Date.now();
+              this.isOn = true;
+              this.startButton.innerHTML = "Stop!!";
+            }
+          };
+          this.stop = function () {
+            if (this.isOn) {
+              clearInterval(interval);
+              interval = null;
+              this.isOn = false;
+              this.startButton.innerHTML = "Start!";
+            }
+          };
+        
+          this.reset = function () {
+            if (!this.isOn) {
+              time = 0;
+              update();
+            }
+          };
+        }
+        
+          </code></pre>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>5.3. TopSort als Web-App</mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Schreiben Sie eine Weboberfläche, in der man beliebige Beziehungen
+        (Vorrang-Relationen) eingeben kann, für die dann die topologische
+        Sortierung per Knopfdruck auf der Webseite ausgegeben wird. Für die
+        Eingabe können Sie HTML5-Eingabefelder oder das HTML-Attribut
+        contenteditable verwenden.
+      </p>
+      <pre><code class="javascript">
+            let dependencies = [];
+
+            function topsort(dependencies) {{
+              console.log("Dependencies in topsort function: ", dependencies);
+              let sorted = [];
+              let visited = new Set();
+              let graph = createGraph(dependencies);
+            
+              for (let node of graph.nodes) {
+                if (!visited.has(node)) {
+                  dfs(node, visited, sorted, graph);
+                }
+              }
+              return sorted.reverse();
+            }
+            
+            function dfs(node, visited, sorted, graph) {
+              visited.add(node);
+            
+              for (let neighbor of graph.adjList.get(node)) {
+                if (!visited.has(neighbor)) {
+                  dfs(neighbor, visited, sorted, graph);
+                }
+              }
+              sorted.push(node);
+            }
+            
+            function createGraph(dependencies) {
+              let nodes = new Set();
+              let adjList = new Map();
+            
+              for (let [a, b] of dependencies) {
+                nodes.add(a);
+                nodes.add(b);
+            
+                if (!adjList.has(a)) {
+                  adjList.set(a, new Set());
+                }
+                if (!adjList.has(b)) {
+                  adjList.set(b, new Set());
+                }
+                adjList.get(a).add(b);
+              }
+              return { nodes, adjList };
+            }
+            function sortRelations() {
+              const relations = document.getElementById("dependencies").value;
+              const dependencies = relations
+                .slice(1, -1)
+                .split("],[")
+                .map((r) => r.split(","))
+                .map(([from, to]) => [from.trim(), to.trim()]);
+            
+              const output = document.getElementById("output");
+              output.innerHTML = "Sortierung: " + topsort(dependencies);
+            }
+            console.log(
+              topsort([
+                ["schlafen", "studieren"],
+                ["essen", "studieren"],
+                ["studieren", "prüfen"],
+              ])
+            );
+            
+          
+            </code></pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

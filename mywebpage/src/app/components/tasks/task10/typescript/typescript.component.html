@@ -1,0 +1,71 @@
+<div class="container">
+  <h1 class="header">Übung 10: TypeScript</h1>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 1. Static classes in TypeScript </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        in TypeScript gibt es statische Klassen, die ähnlich wie in Java und C#
+        verwendet werden können. Eine statische Klasse ist eine Klasse, deren
+        Methoden und Eigenschaften direkt auf die Klasse selbst und nicht auf
+        eine Instanz der Klasse zugreifen. Im Vergleich zu Java und C# bietet
+        TypeScript jedoch einige spezifische Merkmale und Unterschiede.
+        TypeScript ist eine Erweiterung von JavaScript und bietet eine optionale
+        Typprüfung, während Java und C# eigene, statisch typisierte Sprachen
+        sind. TypeScript ermöglicht es Entwicklern, JavaScript-Code mit
+        Typprüfungen und anderen Funktionen moderner Sprachen zu schreiben, aber
+        auch direkt JavaScript-Code auszuführen. Hier ist ein Beispiel, das die
+        Typprüfung in TypeScript demonstriert:
+      </p>
+      <pre><code class="typescript">
+        let userName: string = "John Doe";
+        userName = 123; // Compilerfehler: Type '123' is not assignable to type 'string'.
+      </code></pre>
+      <p>
+        TypeScript ist auch flexibler bei der Verwendung von dynamischen
+        Typisierungen im Vergleich zu Java und C#. Es unterstützt auch einige
+        moderne Sprachfunktionen wie Async/Await und Decorators. Zusammenfassend
+        bietet TypeScript eine engere Integration mit JavaScript und ermöglicht
+        es Entwicklern, JavaScript-Code mit Typprüfungen und anderen Funktionen
+        moderner Sprachen zu schreiben, während Java und C# eigene, statisch
+        typisierte Sprachen sind.
+      </p>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 2. Fehler finden mit TypeScript </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        das fehlerbehaftete JavaScript-Programm. enthält mehrere Fehler: <br />
+        <b> + Unklare Typen:</b> Der Typ von x und y ist nicht definiert und
+        wird daher automatisch als any getypt.<br />
+        <b> + Inkonsistente Typen:</b> Inder Funktion add können
+        unterschiedliche Typen übergeben werden, was zu einer Inkonsistenz bei
+        der Verarbeitung führen kann.<br />
+        <b> + Überflüssiger Code:</b> Die Verwendung von var ist überflüssig und
+        kann Verwirrung stiften.<br />
+        Hier ist ein ergänztes TypeScript-Programm:
+      </p>
+      <pre><code class="typescript">
+        const add = (x: number, y: number): number => x + y;
+        const equals = (x: any, y: any): boolean => x === y;
+        
+        console.log(add(1, 2));
+        console.log(add(true, true));
+        console.log(add(true, false));
+        
+        let x: number = 1;
+        let y: number = 1;
+        console.log(add(equals(x, y), equals(y, x)));        
+        </code></pre>
+      <p>
+        typeScript meldet folgende Fehler:<br />
+        <b>+</b> In der Funktion add werden Typen übergeben, die nicht number
+        sind, was zu einer Typfehlermeldung führt.<br />
+        <b>+</b>In der Funktion equals werden Typen übergeben, die nicht
+        explizit getypt sind, was zu einer Meldung über unklare Typen führt.
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

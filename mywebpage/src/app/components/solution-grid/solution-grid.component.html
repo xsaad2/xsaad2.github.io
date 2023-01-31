@@ -1,10 +1,13 @@
 <div class="tasks">
   <ng-container *ngFor="let source of sources">
-    <div routerLink="{{ source.link }}" class="task">
+    <div (click)="onClick(source.link)" class="task">
       <div class="task_pic">
         <img src="assets\pics\{{ source.image }}.PNG" />
+
+        <div class="task_desc">
+          <b>{{ source.desc }}</b>
+        </div>
       </div>
-      <div class="task_desc">{{ source.desc }}</div>
     </div>
   </ng-container>
 </div>

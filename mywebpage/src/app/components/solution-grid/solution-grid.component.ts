@@ -12,30 +12,62 @@ export class SolutionGridComponent {
   public sources: Task[] = [
     {
       image: 'eich',
-      desc: 'task1',
-      link: '/task1',
+      desc: '1.4. HTML Wireframe',
+      link: 'assets/frames/wireframe1.html',
     },
     {
-      image: 'respomitgrid',
-      desc: 'description 1',
-      link: '',
+      image: 'dynheader',
+      desc: '2.2. CSS-Positionierung Dynamic header ',
+      link: '/dynheader',
     },
     {
-      image: 'flexbox',
-      desc: 'description 1',
-      link: '',
-    },
-    {
-      image: 'button',
-      desc: 'description 1',
-      link: '',
+      image: 'checkbox',
+      desc: '2.2. CSS-Positionierung Checkbox',
+      link: '/piccheckbox',
     },
     {
       image: 'wireframe2',
-      desc: 'freeCodeCamp survey form',
-      link: '',
+      desc: '2.3. Wireframe mit HTML und CSS',
+      link: 'assets/frames/wireframe2.html',
+    },
+    {
+      image: 'flexbox',
+      desc: '3.1. Responsiv mit Flexbox Desktop-First',
+      link: 'assets/frames/flexbox.html',
+    },
+    {
+      image: 'respomitgrid',
+      desc: '3.3. Responsiv mit Grid',
+      link: 'assets/frames/respomitgrid.html',
+    },
+    {
+      image: 'dom',
+      desc: '5.2. Rednerliste',
+      link: 'assets/frames/dom2.html',
+    },
+    {
+      image: 'topsort',
+      desc: '5.3. TopSort als Web-App',
+      link: 'assets/frames/topsort.html',
+    },
+    {
+      image: 'klammer',
+      desc: '6.1. Klammerpaare',
+      link: 'assets/frames/brackets.html',
+    },
+    {
+      image: 'promises',
+      desc: '8.1. Promises',
+      link: 'assets/frames/fetch.html',
+    },
+    {
+      image: 'svg',
+      desc: '9.1. SVG Grafik von Hand erstellen',
+      link: 'assets/frames/svg.html',
     },
   ];
 
-  onclick(task: string): void {}
+  onClick(link: string) {
+    window.open(link);
+  }
 }

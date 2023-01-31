@@ -1,0 +1,232 @@
+<div class="container">
+  <h1 class="header">Übung 4: JavaScript (JS)</h1>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 4.1. Funktionen </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        1-Schreiben Sie eine Funktion identity(), die ein Argument als Parameter
+        entgegen nimmt und dieses als Ergebnis zurück gibt.
+      </p>
+      <pre>
+        <code class="javascript">
+            function identity(arg){{
+                return arg;
+            }
+        </code>
+        </pre>
+      <p>
+        2-Schreiben Sie eine Funktion identity_function(), die ein Argument als
+        Parameter entgegen nimmt und eine Funktion zurück gibt, die dieses
+        Argument zurück gibt.
+      </p>
+      <pre>
+        <code class="javascript">
+            function identity_function(arg) {{
+                return function () {
+                    return arg;
+                };
+            }
+        </code>
+        </pre>
+      <p>
+        3-Schreiben Sie zwei binäre Funktionen add und mul, die Summe und
+        Produkt berechnen.
+      </p>
+      <pre>
+        <code class="javascript">
+            function add(x, y) {{
+                return x + y;
+            }
+                
+            function mul(x, y) {
+              return x * y;
+            }
+        </code>
+      </pre>
+      <p>
+        4-Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x
+        + y zurück gibt. (Es haben also zwei Funktionsaufrufe zu erfolgen.
+        addf(x) liefert eine Funktion, die auf y angewandt wird.)
+      </p>
+      <pre>
+        <code class="javascript">
+            function addf(x) {{
+                return function (y) {
+                  return x + y;
+                };
+            }
+        </code>
+      </pre>
+      <p>
+        5-Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion
+        wie add(x,y) eine Funktion addf berechnet, die mit zwei Aufrufen das
+        gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll
+        add(x,y) liefern. Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn
+        mul die binäre Multiplikation ist.
+      </p>
+      <pre>
+        <code class="javascript">
+            function applyf(binary){{ {
+                return function (x) {
+                  return function (y) {
+                    return binary(x, y);
+                  };
+                };
+              }
+        </code>
+        </pre>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 4.2. Objekte </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Schreiben Sie die Prototypen Person und Auto in JavaScript, so dass jede
+        Person weiß, welche Autos sie besitzt. Schreiben Sie eine Funktion
+        conflict(), die feststellt, ob ein Auto von mehr als einer Person
+        besessen wird..
+      </p>
+      <pre>
+        <code class="javascript">
+            function Person(name) {{
+                this.name = name;
+                this.ownedCars = [];
+              }
+              
+              Person.prototype.addCar = function (car) {
+                this.ownedCars.push(car);
+                car.owner = this;
+              };
+              
+              function Car(make, model, licensePlate) {
+                this.make = make;
+                this.model = model;
+                this.licensePlate = licensePlate;
+                this.owner = null;
+              }
+        </code>
+        </pre>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 4.3. Fibonacci </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Schreiben Sie im Browser die Fibonacci-Funktion in JS, achten Sie auf
+        Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie
+        zu diesem Zweck jede berechnete Fibonacci-Zahl in einer Tabelle.
+      </p>
+      <pre>
+          <code class="javascript">
+            function fibonacci(n) {{
+                let table = [0, 1];
+                for (let i = 2; i <= n; i++) {
+                    table[i] = table[i - 1] + table[i - 2];
+                }
+                return table[n];
+            }
+          </code>
+          </pre>
+      <p>
+        <b>
+          1-Was ist die größte Fibonacci-Zahl, die sich noch als Integer sicher
+          speichern lässt (Number.MAX_SAFE_INTEGER)? Die wievielte
+          Fibonacci-Zahl in der Fibonacci-Folge ist das?
+        </b>
+      </p>
+      <p>
+        Die größte Fibonacci-Zahl, die sich noch als Integer sicher speichern
+        lässt (Number.MAX_SAFE_INTEGER), ist 9007199254740991. Dies ist die 47te
+        Fibonacci-Zahl in der Folge.
+      </p>
+      <p>
+        <b>
+          2-Was ist die größte Fibonacci-Zahl, die sich noch als Number
+          speichern lässt (Number.MAX_VALUE)? Die wievielte Fibonacci-Zahl in
+          der Fibonacci-Folge ist das (d.h. welche Stelle in der
+          Fibonacci-Folge)?
+        </b>
+      </p>
+      <p>
+        Die größte Fibonacci-Zahl, die sich noch als Number speichern lässt
+        (Number.MAX_VALUE), ist 1.79E+308. Dies ist die 72te Fibonacci-Zahl in
+        der Folge.
+      </p>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> 4.4. TopSort </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Schreiben Sie in JavaScript eine Funktion topsort(), die eine
+        topologische Sortierung berechnet. Topologische Sortierung ist eine Form
+        von Sortierung. Sie kennen die Funktion Array.prototype.sort() und
+        wissen, was als Ergebnis erwartet wird, nämlich eine sortiere Liste.
+        Genauso ist das hier. Die Funktion topsort() soll eine sortierte Liste
+        ausgeben, die keine der eingegebenen Abhängigkeiten verletzt..
+      </p>
+      <pre>
+        <code class="javascript">
+            function topsort(dependencies) {{
+                let sorted = [];
+                let visited = new Set();
+                let graph = createGraph(dependencies);
+              
+                for (let node of graph.nodes) {
+                  if (!visited.has(node)) {
+                    dfs(node, visited, sorted, graph);
+                  }
+                }
+                return sorted;
+              }
+              
+            function dfs(node, visited, sorted, graph) {
+                visited.add(node);
+                
+                for (let neighbor of graph.adjList.get(node)) {
+                    if (!visited.has(neighbor)) {
+                    dfs(neighbor, visited, sorted, graph);
+                    }
+                }
+                sorted.push(node);
+            }
+            
+            function createGraph(dependencies) {
+                let nodes = new Set();
+                let adjList = new Map();
+                
+                for (let [a, b] of dependencies) {
+                    nodes.add(a);
+                    nodes.add(b);
+                
+                    if (!adjList.has(a)) {
+                    adjList.set(a, new Set());
+                    }
+                    if (!adjList.has(b)) {
+                    adjList.set(b, new Set());
+                    }
+                    adjList.get(a).add(b);
+                }
+                return { nodes, adjList };
+            }
+        </code>
+        </pre>
+      <p>Und zu testesn:</p>
+      <pre>
+        <code class="javascript">
+        fet dependencies = [
+            ["a", "b"],
+            ["b", "c"],
+            ["c", "d"],
+            ["d", "e"],
+        ];
+        let result = topsort(dependencies);
+        console.assert(result.toString() === "e,d,c,b,a");
+        </code>
+        Assertion passt!
+        </pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

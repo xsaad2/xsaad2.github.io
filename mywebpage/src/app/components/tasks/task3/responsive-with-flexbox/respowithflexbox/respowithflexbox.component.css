@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+  }
+  .item {
+    margin: 8px;
+    height: 100%;
+  }
+
+  .red {
+    background-color: red;
+    width: 100%;
+    max-height: 100px;
+  }
+  .green {
+    background-color: rgb(126, 246, 96);
+    min-width: 20%;
+    flex-shrink: 1;
+  }
+  .blue {
+    background-color: blue;
+    flex-grow: 1;
+    min-width: 55%;
+    flex-shrink: 1;
+    flex-grow: 3;
+  }
+  .pink {
+    background-color: rgb(216, 51, 78);
+    min-width: 20%;
+    flex-shrink: 1;
+    flex-grow: 0;
+  }
+  @media screen and (max-width: 975px) {
+    .pink {
+      width: 100%;
+      height: 5rem;
+    }
+    .blue {
+      width: 70%;
+    }
+    .green {
+      width: 20%;
+    }
+  }
+  @media screen and (max-width: 336px) {
+    .pink {
+      width: 100%;
+      height: 5rem;
+    }
+    .blue {
+      width: 100%;
+    }
+    .green {
+      width: 100%;
+      height: 5rem;
+    }
+  }

@@ -1,0 +1,22 @@
+.container{
+    height: 100%;
+    display: block;
+    overflow:auto;
+    position:relative;
+    background-color: white;
+}
+.title{
+    position: sticky;
+    top: 0;
+    color: black;
+    border: 2px solid black; 
+    text-align: center; 
+    padding: 10px; 
+    box-sizing:border-box;
+    background-color: aliceblue;
+    
+}
+p{
+   color: black;
+    display: flex;
+}

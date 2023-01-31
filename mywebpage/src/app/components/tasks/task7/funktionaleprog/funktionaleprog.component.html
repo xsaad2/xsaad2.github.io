@@ -1,0 +1,136 @@
+<div class="container">
+  <h1 class="header">Übung 7: Funktionale Programmierung</h1>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title> JavaScript funktional programmieren </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        1-Schreiben Sie eine Funktion curry (von Currying), die eine binäre
+        Funktion und ein Argument nimmt, um daraus eine Funktion zu erzeugen,
+        die ein zweites Argument entgegennimmt. Beispiele: add3 = curry(add, 3);
+        add3(4) ergibt 7 und curry(mul, 5)(6) ergibt 30.
+      </p>
+      <pre><code class="javascript">
+        function curry(binaryFn, firstArg) {{  
+            return function (secondArg) {
+                return binaryFn(firstArg, secondArg);
+            };
+            }
+            let add3 = curry(add, 3);
+            console.log(curry(mul, 5)(6)); // soll 30
+        </code></pre>
+      <p>
+        2-Erzeugen Sie die inc-Funktion mit Hilfe einer der Funktionen addf,
+        applyf und curry aus den letzten Aufgaben, ohne die Funktion inc selbst
+        zu implementieren. inc(x) soll immer x + 1 zurückgeben und lässt sich
+        natürlich auch direkt implementieren. Das ist aber hier nicht die
+        Aufgabe. Vielleicht schaffen Sie es, drei Varianten der
+        inc-Implementierung zu schreiben?
+      </p>
+      <pre><code class="javascript">
+        //First variant
+        let inc1 = addf(1);
+        //Second variant
+        let inc2 = applyf(add)(1);
+        //Third variant
+        let inc3 = curry(add, 1);
+      </code></pre>
+      <p>
+        3-Schreiben Sie eine Funktion methodize, die eine binäre Funktion (z.B.
+        add oder mul) in eine unäre Methode verwandelt. Nach
+        Number.prototype.add = methodize(add) soll (3).add(4) genau 7 ergeben.
+      </p>
+      <pre><code class="javascript">
+        function methodize(binary) {{
+          return function (y) {
+            return binary(this, y);
+          };
+        }
+        Number.prototype.add = methodize(add);
+        console.log((3).add(4)); //soll 7
+      </code></pre>
+      <p>
+        4-Schreiben Sie eine Funktion demethodize, die eine unäre Methode (z.B.
+        add oder mul) in eine binäre Funktion umwandelt.
+        demethodize(Number.prototype.add)(5, 6) soll 11 ergeben.
+      </p>
+      <pre><code class="javascript">
+        function demethodize(method) {{
+          return function (x, y) {
+            return method.call(x, y);
+          };
+        }
+        let binaryAdd = demethodize(Number.prototype.add);
+        console.log(binaryAdd(5, 6)); //soll 11
+      </code></pre>
+      <p>
+        5-Schreiben Sie eine Funktion twice, die eine binäre Funktion in eine
+        unäre Funktion umwandelt, die den einen Parameter zweimal weiter reicht.
+        Also z.B. var double = twice(add); double(11) soll 22 ergeben und var
+        square = twice(mul); square(11) soll mul(11,11) === 121 ergeben.
+      </p>
+      <pre><code class="javascript">
+        function twice(binary) {{
+          return function (x) {
+            return binary(x, x);
+          };
+        }
+        var double = twice(add);
+        console.log(double(11)); // soll 22
+        
+        var square = twice(mul);
+        console.log(square(11)); // soll 121
+      </code></pre>
+      <p>
+        6-Schreiben Sie eine Funktion composeu, die zwei unäre Funktionen in
+        eine einzelne unäre Funktion transformiert, die beide nacheinander
+        aufruft. Also z.B. soll composeu(double, square)(3) genau 36 ergeben.
+      </p>
+      <pre><code class="javascript">
+        function composeu(unary1, unary2) {{
+          return function (x) {
+            return unary2(unary1(x));
+          };
+        }
+        
+        console.log(composeu(double, square)(3)); // soll 36
+      </code></pre>
+      <p>
+        7-Schreiben Sie eine Funktion composeb, die zwei binäre Funktionen in
+        eine einzelne Funktion transformiert, die beide nacheinander aufruft.
+        Also z.B. composeb(add, mul)(2, 3, 5) soll 25 ergeben.
+      </p>
+      <pre><code class="javascript">
+        function composeb(binary1, binary2) {{
+          return function (x, y, z) {
+            return binary2(binary1(x, y), z);
+          };
+        }
+        
+        console.log(composeb(add, mul)(2, 3, 5)); //soll 25
+      </code></pre>
+      <p>
+        8-Schreiben Sie eine Funktion once, die einer anderen Funktion nur
+        einmal erlaubt, aufgerufen zu werden. Also z.B. add_once = once(add);
+        add_once(3, 4) soll beim ersten Mal 7 ergeben, beim zweiten Mal soll
+        jedoch add_once(3, 4) einen Fehlerabbruch bewirken.
+      </p>
+      <pre><code class="javascript">
+        function counterf(start) {{
+          let count = start;
+          return {
+            inc: function () {
+              count += 1;
+              return count;
+            },
+            dec: function () {
+              count -= 1;
+              return count;
+            },
+          };
+        }
+      </code></pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

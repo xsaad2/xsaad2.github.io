@@ -1,0 +1,132 @@
+* {
+    font-family: sans-serif;
+  }
+  body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: rgb(240, 240, 240);
+  }
+  .header {
+    font-size: 14px;
+    display: flex;
+    position: sticky;
+    background-color: rgb(67, 67, 67);
+    height: 50px;
+    color: rgb(205, 210, 213);
+    justify-content: center;
+    align-items: center;
+    top: 0;
+  }
+  .header_list {
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+
+  .h1 {
+    padding: 20px;
+    text-align: center;
+    font-size: x-large;
+  }
+  main {
+    padding-bottom: 30px;
+  }
+  .content {
+    display: flex;
+    height: auto;
+    max-width: auto;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+  }
+  p {
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .image {
+    height: auto;
+    max-width: auto;
+    display: flex;
+    justify-content: right;
+    padding-left: 50px;
+  }
+  .img {
+    height: 450px;
+    max-width: 350px;
+    display: flex;
+    border-radius: 20px;
+    border: 1px black solid;
+  }
+  .orderbtn {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(236, 141, 53);
+    color: white;
+    font-size: 12px;
+    border: none;
+    font-size: 15px;
+  }
+  .orderbtn:hover,
+  .footer_btn:hover {
+    background-color: rgba(241, 159, 76, 0.867);
+  }
+  .headerbtn:hover{
+    color: rgb(194, 189, 189);
+  }
+  .headerbtn{
+    color: white;
+  }
+  .text1 {
+    max-width: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3 1fr);
+    justify-content: left;
+  }
+  .btn {
+    text-align: center;
+  }
+  .textnbut {
+    height: auto;
+    max-width: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    padding-left: 100px;
+  }
+  .footer {
+    font-size: 14px;
+    position: sticky;
+    background-color: rgb(7, 25, 38);
+    height: 200px;
+    color: rgb(205, 210, 213);
+  }
+  .footer_text {
+    justify-content: center;
+    align-items: center;
+  }
+  .footer_btn_cntnr {
+    width: 100%;
+    text-align: center;
+  }
+  .footer_btn {
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(236, 141, 53);
+    color: white;
+    font-size: 12px;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+  }

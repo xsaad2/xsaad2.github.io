@@ -4,20 +4,27 @@
     <button mat-button (click)="sidenav.toggle()">
       <mat-icon> menu </mat-icon>
     </button>
-    <span>Welcome</span>
+    <span style="cursor: pointer" routerLink=""> Solution-Navigator</span>
+
     <span class="spacer"></span>
-    <button mat-button>Home</button>
-    <button mat-button>Solutions</button>
+    <button class="toolbarbtn" mat-button [routerLink]="''">Home</button>
+    <button class="toolbarbtn" mat-button [routerLink]="'solutions'">
+      Frames
+    </button>
   </mat-toolbar>
 </div>
 
 <!--Sidenav-->
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav class="sidenav" #sidenav mode="side">
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="''">Home</a>
-      <a mat-list-item [routerLink]="'solutions'">Solutions</a>
-      <a mat-list-item [routerLink]="'task1'">task1</a>
+  <mat-sidenav class="sidenav custom-sidenav" #sidenav mode="side">
+    <mat-nav-list class="custom-sidenav-items">
+      <a mat-list-item [routerLink]="'task1'">HTML</a>
+      <a mat-list-item [routerLink]="'javascript'">Javascript</a>
+      <a mat-list-item [routerLink]="'dom'">Dom</a>
+      <a mat-list-item [routerLink]="'ecma'">ECMAScript (ES)</a>
+      <a mat-list-item [routerLink]="'functionalprog'">Funktionale Prog</a>
+      <a mat-list-item [routerLink]="'fetch'">Asynchrones JS</a>
+      <a mat-list-item [routerLink]="'typescript'">TypeScript</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

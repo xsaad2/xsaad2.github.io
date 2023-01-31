@@ -1,13 +1,17 @@
 <div class="container">
+  <h1 class="header">HTTP, URI und HTML</h1>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let question of fragen">
+    <mat-expansion-panel class="parent-panel" *ngFor="let question of fragen">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ question.titleQuestion }}
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <mat-expansion-panel *ngFor="let innerQ of question.questions">
+      <mat-expansion-panel
+        class="child-panel"
+        *ngFor="let innerQ of question.questions"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{ innerQ.q }}
