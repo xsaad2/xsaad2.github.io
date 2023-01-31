@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <style>
+      .input-error {
+        border-color: red;
+      }
+      .input-correct {
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>6.1-Klammerpaare</h1>
+    <h3>Sie Können neue Symbolepaare eingeben</h3>
+    <input
+      value="[(,)],[{,}]"
+      type="text"
+      id="symbols"
+      contenteditable="true"
+      placeholder="[(,)],[{,}],[[,]]"
+    />
+    <input type="text" id="inputField" />
+    <button id="checkButton">Check</button>
+    <script src="brackets.js"></script>
+  </body>
+</html>
